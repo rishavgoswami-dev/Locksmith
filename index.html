@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Generate smart, strong, and secure passwords, paraphases, and PINs."
+    />
+    <title>Locksmith™ | Password Generator | Smart, Strong & Secure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="Asset/Icons/logo.svg" />
+    <link rel="preload" href="Asset/Icons/confirm.svg" as="image" />
+    <link rel="preload" href="Asset/Icons/copy-content.svg" as="image" />
+  </head>
+  <body>
+    <main class="app">
+      <!-- PASSWORD CARD -->
+      <article class="password-card" aria-label="Password Generator">
+        <div class="header">
+          <div class="header-group title-group">
+            <a
+              class="header-logo"
+              href="index.html"
+              aria-label="Locksmith Home"
+            >
+              <img
+                src="Asset/Icons/logo.svg"
+                alt="Locksmith Icon"
+                aria-hidden="true"
+              />
+            </a>
+            <hgroup>
+              <h1>Locksmith™</h1>
+              <p>v1.0.0 • Smart, Strong & Secure • Password Generator</p>
+            </hgroup>
+          </div>
+        </div>
+        <!-- Tabs -->
+        <nav class="tab-group" aria-label="Generator Types">
+          <button class="tab-btn" type="button">
+            <img src="Asset/Icons/random.svg" alt="" aria-hidden="true" />Random
+          </button>
+          <button class="tab-btn" type="button">
+            <img
+              src="Asset/Icons/memorable.svg"
+              alt=""
+              aria-hidden="true"
+            />Memorable
+          </button>
+          <button class="tab-btn" type="button">
+            <img src="Asset/Icons/pin.svg" alt="" aria-hidden="true" /> Pin
+          </button>
+        </nav>
+
+        <!-- Random Password Panel -->
+        <section
+          class="panel rand-panel"
+          aria-label="Random Password Generator"
+        >
+          <div class="output-header">
+            <label class="output-label" for="rand-out" aria-live="polite"
+              >Generated Password</label
+            >
+          </div>
+          <div class="output-group">
+            <input class="output-val" id="rand-out" type="password" readonly />
+            <button
+              class="vis-btn"
+              id="rand-vis"
+              type="button"
+              aria-label="Toggle Visibility"
+            >
+              <img
+                class="vis-icon"
+                src="Asset/Icons/visibility-off.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+            <button
+              class="copy-btn"
+              id="rand-copy"
+              type="button"
+              aria-label="Copy Password"
+            >
+              <img
+                class="copy-icon"
+                src="Asset/Icons/copy-content.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+
+          <div class="strength-row">
+            <div class="strength-detail" id="rand-strength-detail"></div>
+            <span class="strength-label" id="rand-strength-label">—</span>
+          </div>
+
+          <h2 class="section-title">Customize Password</h2>
+          <hr class="divider" />
+
+          <div class="range-group">
+            <label class="range-label" for="rand-len">Characters:</label>
+            <div class="range-wrap">
+              <input
+                class="range-slider"
+                id="rand-len"
+                type="range"
+                min="1"
+                max="64"
+                value="8"
+              />
+              <input
+                class="range-num"
+                id="rand-num"
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                aria-label="Character Count"
+              />
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="checkbox-group" role="group" aria-label="Character Types">
+            <label class="checkbox-label" for="opt-low">
+              <input id="opt-low" type="checkbox" />Lowercase
+            </label>
+            <label class="checkbox-label" for="opt-up">
+              <input id="opt-up" type="checkbox" />Uppercase
+            </label>
+            <label class="checkbox-label" for="opt-num">
+              <input id="opt-num" type="checkbox" />Numbers
+            </label>
+            <label class="checkbox-label" for="opt-sym">
+              <input id="opt-sym" type="checkbox" />Symbols
+            </label>
+          </div>
+
+          <button class="generate-btn" id="rand-gen" type="button">
+            Generate
+          </button>
+        </section>
+
+        <!-- Memorable Password Panel -->
+        <section
+          class="panel memo-panel"
+          aria-label="Memorable Paraphase Generator"
+        >
+          <div class="output-header">
+            <label class="output-label" for="memo-out" aria-live="polite"
+              >Generated Paraphase</label
+            >
+          </div>
+          <div class="output-group">
+            <input class="output-val" id="memo-out" type="password" readonly />
+            <button
+              class="vis-btn"
+              id="memo-vis"
+              type="button"
+              aria-label="Toggle Visibility"
+            >
+              <img
+                class="vis-icon"
+                src="Asset/Icons/visibility-off.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+            <button
+              class="copy-btn"
+              id="memo-copy"
+              type="button"
+              aria-label="Copy Paraphase"
+            >
+              <img
+                class="copy-icon"
+                src="Asset/Icons/copy-content.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+
+          <div class="strength-row">
+            <div class="strength-detail" id="memo-strength-detail"></div>
+            <span class="strength-label" id="memo-strength-label">—</span>
+          </div>
+
+          <h2 class="section-title">Customize Paraphase</h2>
+          <hr class="divider" />
+
+          <div class="range-group">
+            <label class="range-label" for="memo-len">Words:</label>
+            <div class="range-wrap">
+              <input
+                class="range-slider"
+                id="memo-len"
+                type="range"
+                min="1"
+                max="16"
+                value="1"
+              />
+              <input
+                class="range-num"
+                id="memo-num"
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                aria-label="Word Count"
+              />
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div
+            class="checkbox-group"
+            role="group"
+            aria-label="Paraphase Options"
+          >
+            <label class="checkbox-label" for="memo-cap">
+              <input id="memo-cap" type="checkbox" />1st Capital
+            </label>
+            <label class="checkbox-label" for="memo-full">
+              <input id="memo-full" type="checkbox" />Full Words
+            </label>
+            <label class="checkbox-label" for="memo-sep">
+              <input id="memo-sep" type="checkbox" />Separator
+            </label>
+            <label class="checkbox-label" for="memo-nospc">
+              <input id="memo-nospc" type="checkbox" />Merge
+            </label>
+          </div>
+
+          <button class="generate-btn" id="memo-gen" type="button">
+            Generate
+          </button>
+        </section>
+
+        <!-- PIN Password Panel -->
+        <section class="panel pin-panel" aria-label="PIN Generator">
+          <div class="output-header">
+            <label class="output-label" for="pin-out" aria-live="polite"
+              >Generated PIN</label
+            >
+          </div>
+          <div class="output-group">
+            <input class="output-val" id="pin-out" type="password" readonly />
+            <button
+              class="vis-btn"
+              id="pin-vis"
+              type="button"
+              aria-label="Toggle Visibility"
+            >
+              <img
+                class="vis-icon"
+                src="Asset/Icons/visibility-off.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+            <button
+              class="copy-btn"
+              id="pin-copy"
+              type="button"
+              aria-label="Copy PIN"
+            >
+              <img
+                class="copy-icon"
+                src="Asset/Icons/copy-content.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+          </div>
+
+          <div class="strength-row">
+            <div class="strength-detail" id="pin-strength-detail"></div>
+            <span class="strength-label" id="pin-strength-label">—</span>
+          </div>
+
+          <h2 class="section-title">Customize PIN</h2>
+          <hr class="divider" />
+
+          <div class="range-group">
+            <label class="range-label" for="pin-len">Digits:</label>
+            <div class="range-wrap">
+              <input
+                class="range-slider"
+                id="pin-len"
+                type="range"
+                min="4"
+                max="32"
+                value="6"
+              />
+              <input
+                class="range-num"
+                id="pin-num"
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                aria-label="Digit Count"
+              />
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="checkbox-group" role="group" aria-label="PIN Options">
+            <label class="checkbox-label" for="pin-norep">
+              <input id="pin-norep" type="checkbox" />Unique
+            </label>
+            <label class="checkbox-label" for="pin-noseq">
+              <input id="pin-noseq" type="checkbox" />Chaotic
+            </label>
+            <label class="checkbox-label" for="pin-sep">
+              <input id="pin-sep" type="checkbox" />Separator
+            </label>
+            <label class="checkbox-label" for="pin-hex">
+              <input id="pin-hex" type="checkbox" />HexCode
+            </label>
+          </div>
+
+          <button class="generate-btn" id="pin-gen" type="button">
+            Generate
+          </button>
+        </section>
+      </article>
+
+      <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <img alt="" aria-hidden="true" />
+        <p></p>
+      </div>
+    </main>
+    <script src="dictionary.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
